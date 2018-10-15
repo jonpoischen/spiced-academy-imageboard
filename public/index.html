@@ -1,12 +1,36 @@
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title>Image Board</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div id=""></div>
+    <div id="main">
+        <h1 v-bind:class="className">{{heading}}</h1>
+        <ol v-if="cities.length">
+            <li v-for="city in cities" v-on:mousedown="handleMouseDown(city)">
+                {{city.name}}, {{city.country}} <input v-model="city.country"></input>
+            </li>
+        </ol>
+        <p>2 + 2 = {{ 2 + 2 }}</p>
+        <p>Hello, {{greetee}}!</p>
+        <input :placeholder="className" v-model="greetee">
+        <button v-on:click="handleClick">Submit</button>
+
+        <br><br><br>
+
+        <p>IMAGES</p>
+        <div class="container">
+            <div v-for="image in images">
+                <div class="img-box">
+                    <img v-bind:src="image.url">{{image.title}}</img>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
