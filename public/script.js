@@ -3,11 +3,11 @@
     new Vue({
         el: '#main',
         data: {
-            heading: 'My Vue App',
-            greetee: 'World',
-            cities: [],
-            className: '',
-            images: []
+            images: [],
+            title: '',
+            desc: '',
+            username: '',
+            file: ''
         },
         created: function() {
             console.log("created");
@@ -39,10 +39,21 @@
             },
             handleMousedown: function(city) {
                 console.log(city.name, city.country);
+            },
+            handleFileChange: function(e) {
+                this.file = e.target.files[0];
+            },
+            upload: function(e) {
+                console.log("upload called");
+                var formData = new FormData;
+                formData.append('file', this.file);
+                formData.append('desc', this.desc);
+                formData.append('title', this.title);
+                formData.append('username', this.username);
+                axios.post('/upload', formData);
+                console.log("uploaded ended");
             }
         }
     });
+    
 })();
-
-// <input v-model="imageToUplaod.title" name="title">
-// <input v-model="imageToUplaod.desc" name="desc">

@@ -6,20 +6,12 @@
 </head>
 <body>
     <div id="main">
-        <h1 v-bind:class="className">{{heading}}</h1>
-        <ol v-if="cities.length">
-            <li v-for="city in cities" v-on:mousedown="handleMouseDown(city)">
-                {{city.name}}, {{city.country}} <input v-model="city.country"></input>
-            </li>
-        </ol>
-        <p>2 + 2 = {{ 2 + 2 }}</p>
-        <p>Hello, {{greetee}}!</p>
-        <input :placeholder="className" v-model="greetee">
-        <button v-on:click="handleClick">Submit</button>
+        <input name="title" v-model="title" placeholder="Title">
+        <input name="desc" v-model="desc" placeholder="Description">
+        <input name="username" v-model="username" placeholder="Uploader Name">
+        <input name="file" type="file" accept="image/*" @change="handleFileChange">
+        <button @click="upload">Submit</button>
 
-        <br><br><br>
-
-        <p>IMAGES</p>
         <div class="container">
             <div v-for="image in images">
                 <div class="img-box">
