@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const db = require('./database.js');
-
+const s3 = require('./s3.js');
+const {s3Url} = require('./config.json');
 const multer = require('multer');
 const uidSafe = require('uid-safe');
 const path = require('path');
@@ -35,18 +36,13 @@ app.get('/images', function(req, res) {
     }).catch(err => {console.log(err)});
 });
 
-app.post('/upload', uploader.single('file'), function(req, res) {
-    if (req.file) {
-        console.log("req.file: ", req.file);
-        res.json({
-            success: true
-        });
-    } else {
-        console.log("no file");
-        res.json({
-            success: false
-        });
-    }
+app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
+    const imgUrl = s3Url + req.file.filename;
+    db.uploadImages(imgUrl, req.body.username, req.body.title, req.body.desc)
+    .then(results => {
+        res.json(results);
+    })
+    .catch(err => {console.log(err)});
 });
 
 app.listen(8080, () => console.log("Listening"));
