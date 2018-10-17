@@ -45,4 +45,12 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
     .catch(err => {console.log(err)});
 });
 
+app.get('/image-modal', function(req, res) {
+    db.getModalData(req.query.id)
+    .then(results => {
+        res.json(results);
+    })
+    .catch(err => {console.log(err)});
+})
+
 app.listen(8080, () => console.log("Listening"));

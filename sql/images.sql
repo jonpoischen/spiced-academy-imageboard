@@ -34,3 +34,10 @@ SELECT * FROM images
 WHERE id < $1
 ORDER BY id DESC
 LIMIT 20;
+
+CREATE TABLE comments(
+    id SERIAL PRIMARY KEY,
+    comment VARCHAR(500),
+    username VARCHAR(50),
+    image_id INT NOT NULL,
+);

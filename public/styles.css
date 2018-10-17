@@ -1,3 +1,7 @@
+* {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
+
 body {
     background-image:url(/cardboard_@2X.png);
     background-attachment: fixed;
@@ -5,6 +9,33 @@ body {
 
 #main {
     text-align: center;
+}
+
+.box {
+    border-top: 5px solid gray;
+    border-left: 5px solid gray;
+    border-radius: 20px;
+    background-color: white;
+    -webkit-box-shadow: rgba(0, 0, 0,.30) 10px 20px 3px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100vh -10px;
+    width: 100vw - 10px;
+    margin: 10px;
+}
+
+.box h1 {
+    color: white;
+    right: 10px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.box h1 span {
+    cursor: pointer;
 }
 
 .container {
@@ -18,21 +49,45 @@ body {
 .img-box {
     width: 500px;
     height: 400px;
-    border: 10px solid #2e5a1c;
+    border-top: 5px solid gray;
+    border-left: 5px solid gray;
     display: inline-block;
     margin: 20px;
     border-radius: 20px;
-    background-color: #4e9525;
-}
-
-body {
-    background-color: #4e9525;
+    background-color: white;
+    -webkit-box-shadow: rgba(0, 0, 0,.30) 10px 20px 3px;
+    cursor: pointer;
 }
 
 button {
-    width: 120px;
-    height: 50px;
+    width: 100px;
+    height: 32px;
     font-size: 20px;
+    -webkit-box-shadow: rgba(0, 0, 0,.30) 10px 20px 3px;
+}
+
+h1 {
+    font-size: 90px;
+    color: white;
+    text-shadow:   0 1px 0 hsl(174,5%,80%),
+                   0 2px 0 hsl(174,5%,75%),
+                   0 3px 0 hsl(174,5%,70%),
+                   0 4px 0 hsl(174,5%,66%),
+                   0 5px 0 hsl(174,5%,64%),
+                   0 6px 0 hsl(174,5%,62%),
+                   0 7px 0 hsl(174,5%,61%),
+                   0 8px 0 hsl(174,5%,60%),
+
+                   0 0 5px rgba(0,0,0,.05),
+                   0 1px 3px rgba(0,0,0,.2),
+                   0 3px 5px rgba(0,0,0,.2),
+                   0 5px 10px rgba(0,0,0,.2),
+                   0 10px 10px rgba(0,0,0,.2),
+                   0 20px 20px rgba(0,0,0,.3);
+}
+
+.smaller-h1 {
+    font-size: 40px;
 }
 
 img {
@@ -49,19 +104,22 @@ input {
     margin: 20px;
     font-size: 20px;
     padding: 20px;
+    -webkit-box-shadow: rgba(0, 0, 0,.30) 10px 20px 3px;
+    border-radius: 10px;
+    border-top: 2px solid gray;
+    border-left: 2px solid gray;
 }
 
 p {
-    font-size: 22px;
-    color: white;
+    font-size: 24px;
+    color: gray;
     word-wrap: break-word;
 }
 
 #fileUpload {
     width: 300px;
-    margin-right: 0px;
-    padding-right: 0px;
-    margin-left: 0px;
-    padding-left: 0px;
-
+    background-color: white;
+    border-radius: 10px;
+    border-top: 2px solid gray;
+    border-left: 2px solid gray;
 }

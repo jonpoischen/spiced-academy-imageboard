@@ -15,6 +15,21 @@ exports.getImages = function() {
     })
 }
 
+exports.getModalData = function(id) {
+    return db.query (
+        `SELECT *
+        FROM images
+        WHERE id = $1;
+        `,
+        [id]
+    )
+    .then(function (results) {
+        return results.rows;
+        console.log("results: ",results);
+        console.log("results.rows: ", results.rows);
+    })
+}
+
 exports.uploadImages = function(url, username, title, description) {
     return db.query (
         `INSERT INTO images (url, username, title, description) VALUES ($1, $2, $3, $4) returning *;`,
