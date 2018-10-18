@@ -1,5 +1,7 @@
 * {
     font-family: 'Nobile', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -11,7 +13,7 @@ body {
     text-align: center;
 }
 
-.box {
+.modal-box {
     border-top: 5px solid gray;
     border-left: 5px solid gray;
     border-radius: 20px;
@@ -24,18 +26,41 @@ body {
     right: 0;
     height: 100vh -10px;
     width: 100vw - 10px;
-    margin: 10px;
+    margin: 50px;
+    text-align: left;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: stretch;
 }
 
-.box h1 {
+.image-pos {
+    flex: 1 0 0;
+    padding-left: 50px;
+    text-align: center;
+}
+
+.comments-pos {
+    flex: 1 0 0;
+    padding-left: 100px;
+    overflow-y: scroll;
+}
+
+.modal-box h1 {
     color: white;
     right: 10px;
     text-align: right;
     padding-right: 20px;
 }
 
-.box h1 span {
-    cursor: pointer;
+.modal-box img {
+    object-fit: contain;
+    object-position: center;
+    width: 75%;
+    height: 75%;
+    position: relative;
+    top: 0;
 }
 
 .container {
@@ -67,8 +92,10 @@ button {
 }
 
 h1 {
-    font-size: 90px;
+    font-size: 100px;
     color: white;
+    margin-bottom: 30px;
+    margin-top: 30px;
     text-shadow:   0 1px 0 hsl(174,5%,80%),
                    0 2px 0 hsl(174,5%,75%),
                    0 3px 0 hsl(174,5%,70%),
@@ -86,8 +113,17 @@ h1 {
                    0 20px 20px rgba(0,0,0,.3);
 }
 
-.smaller-h1 {
+h2 {
     font-size: 40px;
+    text-align: right;
+    padding-right: 40px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+h2 span {
+    cursor: pointer;
 }
 
 img {
@@ -114,6 +150,7 @@ p {
     font-size: 24px;
     color: gray;
     word-wrap: break-word;
+    /* width: 150px; */
 }
 
 #fileUpload {

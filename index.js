@@ -47,8 +47,15 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 
 app.get('/image-modal', function(req, res) {
     db.getModalData(req.query.id)
-    .then(results => {
-        res.json(results);
+    .then(resp => {
+        db.getComments(req.query.id)
+        .then(results => {
+            res.json({
+                results,
+                resp
+            })
+        })
+        .catch(err => {console.log(err)});
     })
     .catch(err => {console.log(err)});
 })
