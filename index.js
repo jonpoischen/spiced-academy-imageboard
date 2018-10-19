@@ -31,7 +31,8 @@ app.use(bodyParser.json());
 app.use(express.static('./public'));
 
 app.get('/images', function(req, res) {
-    db.getImages().then(data => {
+    db.getImages()
+    .then(data => {
         res.json(data);
     }).catch(err => {console.log(err)});
 });
@@ -47,8 +48,29 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 
 app.get('/image-modal', function(req, res) {
     db.getModalData(req.query.id)
-    .then(resp => {
+    .then(data => {
         db.getComments(req.query.id)
+        .then(comments => {
+            res.json({
+                comments,
+                data
+            })
+        })
+        .catch(err => {
+            res.sendStatus(500);
+            console.log(err);
+        });
+    })
+    .catch(err => {
+        res.sendStatus(500);
+        console.log(err);
+    });
+});
+
+app.post('/submitcomment', function(req, res) {
+    db.addComment(req.body.id, req.body.comment, req.body.username)
+    .then(resp => {
+        db.getComments(req.body.id)
         .then(results => {
             res.json({
                 results,
@@ -58,6 +80,13 @@ app.get('/image-modal', function(req, res) {
         .catch(err => {console.log(err)});
     })
     .catch(err => {console.log(err)});
-})
+});
+
+app.get('/images/more/:id', function(req,res) {
+    db.getMoreImages(req.params.id)
+    .then(data => {
+        res.json(data);
+    }).catch(err => {console.log(err)});
+});
 
 app.listen(8080, () => console.log("Listening"));

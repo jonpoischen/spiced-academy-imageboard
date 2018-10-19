@@ -5,18 +5,26 @@ var db = spicedPg(dbUrl);
 
 exports.getImages = function() {
     return db.query (
-        // `SELECT *
-        // FROM images
-        // WHERE id < $1
-        // ORDER BY id DESC
-        // LIMIT 21;
-        // `,
-        // [id]
         `SELECT *
         FROM images
         ORDER BY id DESC
-        LIMIT 21;
+        LIMIT 7;
         `
+    )
+    .then(function (results) {
+        return results.rows;
+    })
+}
+
+exports.getMoreImages = function(id) {
+    return db.query (
+        `SELECT *
+        FROM images
+        WHERE id < $1
+        ORDER BY id DESC
+        LIMIT 7;
+        `,
+        [id]
     )
     .then(function (results) {
         return results.rows;
@@ -38,7 +46,10 @@ exports.getModalData = function(id) {
 
 exports.uploadImages = function(url, username, title, description) {
     return db.query (
-        `INSERT INTO images (url, username, title, description) VALUES ($1, $2, $3, $4) returning *;`,
+        `INSERT INTO images
+        (url, username, title, description)
+        VALUES ($1, $2, $3, $4)
+        returning *;`,
         [url, username, title, description]
     )
     .then(function (results) {
@@ -57,4 +68,14 @@ exports.getComments = function(id) {
     .then(function (results) {
         return results.rows;
     })
+}
+
+exports.addComment = function(id, comment, username) {
+    return db.query (
+        `INSERT INTO comments
+        (comment, username, image_id)
+        VALUES ($1, $2, $3)
+        `,
+        [comment, username, id]
+    )
 }

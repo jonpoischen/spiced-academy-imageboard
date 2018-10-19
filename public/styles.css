@@ -33,18 +33,31 @@ body {
     align-items: center;
     justify-content: space-around;
     align-content: stretch;
+    overflow: hidden;
 }
 
 .image-pos {
-    flex: 1 0 0;
+    flex: 3 0 0;
     padding-left: 50px;
     text-align: center;
 }
 
 .comments-pos {
     flex: 1 0 0;
-    padding-left: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.shown-comments {
     overflow-y: scroll;
+    overflow-wrap: break-word;
+    width: 400px;
+}
+
+.comment-fields {
+    align-self: flex-end;
 }
 
 .modal-box h1 {
@@ -87,6 +100,7 @@ body {
 button {
     width: 100px;
     height: 32px;
+    margin-top: 10px;
     font-size: 20px;
     -webkit-box-shadow: rgba(0, 0, 0,.30) 10px 20px 3px;
 }
@@ -135,7 +149,7 @@ img {
 }
 
 input {
-    width: 400px;
+    width: 300px;
     height: 32px;
     margin: 20px;
     font-size: 20px;
@@ -150,7 +164,7 @@ p {
     font-size: 24px;
     color: gray;
     word-wrap: break-word;
-    /* width: 150px; */
+    padding-top: 25px;
 }
 
 #fileUpload {
@@ -159,4 +173,13 @@ p {
     border-radius: 10px;
     border-top: 2px solid gray;
     border-left: 2px solid gray;
+}
+
+.p-title {
+    font-size: 40px;
+}
+
+.p-author {
+    font-size: 14px;
+    padding: 0px;
 }
