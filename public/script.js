@@ -72,7 +72,7 @@
     new Vue({
         el: '#main',
         data: {
-            heading: 'Poké-Gallery',
+            heading: 'Pokédex',
             images: [],
             imageID: location.hash.slice(1),
             title: '',
