@@ -8,7 +8,7 @@ exports.getImages = function() {
         `SELECT *
         FROM images
         ORDER BY id DESC
-        LIMIT 7;
+        LIMIT 9;
         `
     )
     .then(function (results) {
@@ -22,7 +22,7 @@ exports.getMoreImages = function(id) {
         FROM images
         WHERE id < $1
         ORDER BY id DESC
-        LIMIT 7;
+        LIMIT 9;
         `,
         [id]
     )
